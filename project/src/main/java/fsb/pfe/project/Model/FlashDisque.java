@@ -1,0 +1,51 @@
+package fsb.pfe.project.Model;
+
+import java.sql.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+
+@Table(name = "FlashDisque")
+public class FlashDisque {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idFlashDisque;
+
+    @Column(name = "dateachatFlashDisque")
+    private Date dateachatFlashDisque;
+
+    @Column(name = "datereceptionFlashDisque")
+    private Date datereceptionFlashDisque;
+
+    @Column(name = "nbrFlashDisque")
+    private int nbrFlashDisque;
+
+    @Column(name = "caracteristiqueFlashDisque")
+    private String caracteristiqueFlashDisque;
+
+    @Column(name = "nbrdeserieFlashDisque")
+    private String nbrdeserieFlashDisque;
+
+    @Column(name = "nbrinventaireFlashDisque")
+    private String nbrinventaireFlashDisque;
+
+    @Column(name = "dateaffectationFlashDisque")
+    private String dateaffectationFlashDisque;
+
+    @Column(name = "affectationpersoneFlashDisque")
+    private String affectationpersoneFlashDisque;
+
+    @Column(name = "observationFlashDisque")
+    private String observationFlashDisque;
+
+    @Column(name = "quantiteFlashDisque")
+    private Date quantiteFlashDisque;
+
+}
