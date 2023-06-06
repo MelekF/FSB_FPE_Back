@@ -1,11 +1,6 @@
 package fsb.pfe.project.Model;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 
@@ -15,6 +10,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iduser;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="account_id", referencedColumnName = "id")
+  private Account account  ;
 
     @Column(name = "usernom")
     private String usernom;
@@ -127,4 +126,11 @@ public class User {
         this.role = role;
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

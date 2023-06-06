@@ -3,6 +3,7 @@ package fsb.pfe.project.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,46 +25,37 @@ public class ReservationController {
     private ReservationService ReservationService;
 
     @PostMapping("/addReservation")
-    public Reservation CreateReservation(@RequestBody Reservation Reservation) {
-        return ReservationService.CreateReservation(Reservation);
+    public ResponseEntity<Reservation> CreateReservation(@RequestBody Reservation Reservation) {
+        Reservation newReservation= ReservationService.CreateReservation(Reservation);
+        return new ResponseEntity<>(Reservation, HttpStatus.OK);
     }
 
-    @PostMapping("/addReservations")
-    public List<Reservation> CreateReservations(@RequestBody List<Reservation> Reservation) {
-        return ReservationService.CreateReservations(Reservation);
-    }
-
+    //@PostMapping("/addReservations")
+    //public List<Reservation> CreateReservations(@RequestBody List<Reservation> Reservation) {
+      //  return ReservationService.CreateReservations(Reservation);
+    //}
     @GetMapping("/Reservations")
-    public List<Reservation> getReservations() {
-        return ReservationService.getReservations();
-
+    public ResponseEntity<List<Reservation>> getReservations() {
+        List<Reservation> Reservation= ReservationService.getReservations();
+        return new ResponseEntity<>(Reservation, HttpStatus.OK);
     }
-
     @GetMapping("/Reservation/{idReservation}")
-    public Reservation getReservationById(@PathVariable Long idReservation) {
-        return ReservationService.getReservationById(idReservation);
+    public ResponseEntity<Reservation> getReservationById(@PathVariable("idReservation") Long idReservation) {
+        Reservation Reservation= ReservationService.getReservationById(idReservation);
+        return new ResponseEntity<>(Reservation, HttpStatus.OK);
     }
+   // @PutMapping("/updateReservation/{idReservation}")
+    //public ResponseEntity<Reservation> UpdateReservation(@PathVariable Long idReservation, Reservation Reservation) {
+      //  Reservation UpdateReservation = ReservationService.UpdateReservation( idReservation,Reservation);
+        //return new ResponseEntity<>(UpdateReservation,HttpStatus.OK);
 
-    // @PutMapping("/updateReservation")
-    // public Reservation UpdateReservation(@RequestBody Reservation Reservation) {
-    // return ReservationService.UpdateReservation(Reservation);
-    // }/////////////////////////////////////////////////////////////////////////
-    // @PutMapping("/updateReservation/{idReservation}")
-    // public Reservation UpdateReservation(@RequestBody Long idReservation,
-    // Reservation Reservation) {
-    // return ReservationService.UpdateReservation(idReservation, Reservation);
-    // }
-
-    @PutMapping("/updateReservation/{idReservation}")
-    public ResponseEntity<Reservation> UpdateReservation(@PathVariable("idReservation") Long idReservation,
-            @RequestBody Reservation Reservation) {
-        Reservation UpdateReservation = ReservationService.UpdateReservation(idReservation, Reservation);
-        return ResponseEntity.ok(UpdateReservation);
-    }
+    //}
 
     @DeleteMapping("/deleteReservation/{idReservation}")
-    public String DeleteReservation(@PathVariable Long idReservation) {
-        return ReservationService.DeleteReservation(idReservation);
+    public  ResponseEntity<?> deleteReservation(@PathVariable("idReservation")Long idReservation)
+    {
+        ReservationService.DeleteReservation(idReservation);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

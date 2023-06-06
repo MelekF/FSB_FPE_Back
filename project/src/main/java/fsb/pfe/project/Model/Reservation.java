@@ -1,16 +1,17 @@
 package fsb.pfe.project.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.sql.Date;
+
 
 @Entity
 
+
 @Table(name = "reservation")
-public class Reservation {
+public class Reservation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +29,8 @@ public class Reservation {
     @Column(name = "reservationncin")
     private String reservationncin;
 
-    @Column(name = "reservationtype")
-    private String reservationtype;
+    //@Column(name = "reservationtype")
+   // private String reservationtype;
 
     @Column(name = "reservationsalle")
     private String reservationsalle;
@@ -58,7 +59,7 @@ public class Reservation {
         this.reservationtel = reservationtel;
         this.reservationemail = reservationemail;
         this.reservationncin = reservationncin;
-        this.reservationtype = reservationtype;
+       // this.reservationtype = reservationtype;
         this.reservationsalle = reservationsalle;
         this.reservationmateriel = reservationmateriel;
         this.reservationdate = reservationdate;
@@ -77,8 +78,8 @@ public class Reservation {
         return reservationnom;
     }
 
-    public void setReservationnom(String reservationnom) {
-        this.reservationnom = reservationnom;
+   public void setReservationnom(String reservationnom) {
+       this.reservationnom = reservationnom;
     }
 
     public String getReservationtel() {
@@ -105,13 +106,13 @@ public class Reservation {
         this.reservationncin = reservationncin;
     }
 
-    public String getReservationtype() {
-        return reservationtype;
-    }
+    //public String getReservationtype() {
+       // return reservationtype;
+    //}
 
-    public void setReservationtype(String reservationtype) {
-        this.reservationtype = reservationtype;
-    }
+    //public void setReservationtype(String reservationtype) {
+      //  this.reservationtype = reservationtype;
+    //}
 
     public String getReservationsalle() {
         return reservationsalle;

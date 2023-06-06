@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import fsb.pfe.project.Model.Adaptateur;
 import fsb.pfe.project.Repository.AdaptateurRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AdaptateurService {
     @Autowired
     private AdaptateurRepository AdaptateurRepository;

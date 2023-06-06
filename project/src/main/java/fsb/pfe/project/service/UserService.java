@@ -47,16 +47,20 @@ public class UserService {
 
     // UpDate User
     public User UpdateUser(User User) {
-        User existingUser = userRepository.findById(User.getIduser())
-                .orElse(null);
-        existingUser.setUsernom(User.getUsernom());
-        existingUser.setUserprenom(User.getUserprenom());
-        existingUser.setUseremail(User.getUseremail());
-        existingUser.setUsermotdepasse(User.getUsermotdepasse());
-        existingUser.setUseradress(User.getUseradress());
-        existingUser.setUserntel(User.getUserntel());
-
-        return userRepository.save(existingUser);
+        return userRepository.save(User);
     }
+    // UpDate User
+    //public User UpdateUser(User User) {
+      //  User existingUser = userRepository.findById(User.getIduser())
+        //        .orElse(null);
+        //existingUser.setUsernom(User.getUsernom());
+      //  existingUser.setUserprenom(User.getUserprenom());
+       // existingUser.setUseremail(User.getUseremail());
+        //existingUser.setUsermotdepasse(User.getUsermotdepasse());
+       // existingUser.setUseradress(User.getUseradress());
+      //  existingUser.setUserntel(User.getUserntel());
+
+       // return userRepository.save(existingUser);
+  //  }
 
 }

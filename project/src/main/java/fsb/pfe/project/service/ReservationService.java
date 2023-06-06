@@ -1,9 +1,11 @@
 package fsb.pfe.project.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import fsb.pfe.project.Exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import fsb.pfe.project.Model.Reservation;
@@ -43,44 +45,39 @@ public class ReservationService {
     }
 
     // UpDate Reservation
-    // public Reservation UpdateReservation(Reservation Reservation) {
-    // Reservation existingReservation =
-    // ReservationRepository.findById(Reservation.getIdreservation())
-    // .orElse(null);
-    // existingReservation.setReservationnom(Reservation.getReservationnom());
-    // existingReservation.setReservationtel(Reservation.getReservationtel());
-    // existingReservation.setReservationemail(Reservation.getReservationemail());
-    // existingReservation.setReservationncin(Reservation.getReservationncin());
-    // existingReservation.setReservationtype(Reservation.getReservationtype());
-    // existingReservation.setReservationsalle(Reservation.getReservationsalle());
-    // existingReservation.setReservationmateriel(Reservation.getReservationmateriel());
-    // existingReservation.setReservationdate(Reservation.getReservationdate());
-    // existingReservation.setReservationheure(Reservation.getReservationheure());
+   // public ResponseEntity<Reservation> UpdateReservation(Long reservationId, Reservation Reservation) {
+    //   Optional<Reservation> existingReservation = ReservationRepository.findById(reservationId);
+    //   if (existingReservation.isPresent()) {
+    //      Reservation updatedReservation = existingReservation.get();
 
-    // return ReservationRepository.save(existingReservation);
-    // }////////////////////////////////////////////////////////////////////////////////////////////
-    public Reservation UpdateReservation(Long Idreservation, Reservation Reservation) {
-        Reservation existingReservation = ReservationRepository.findById(Idreservation).orElse(null);
-        if (existingReservation == null) {
-            throw new ResourceNotFoundException("Reservation not found with id: " + Idreservation);
-        }
-        existingReservation.setReservationnom(Reservation.getReservationnom());
-        existingReservation.setReservationtel(Reservation.getReservationtel());
-        existingReservation.setReservationemail(Reservation.getReservationemail());
-        existingReservation.setReservationncin(Reservation.getReservationncin());
-        existingReservation.setReservationtype(Reservation.getReservationtype());
-        existingReservation.setReservationsalle(Reservation.getReservationsalle());
-        existingReservation.setReservationmateriel(Reservation.getReservationmateriel());
-        existingReservation.setReservationdate(Reservation.getReservationdate());
-        existingReservation.setReservationheure(Reservation.getReservationheure());
+    //       existingReservation.setReservationnom(Reservation.getReservationnom());
+    //  existingReservation.setReservationtel(Reservation.getReservationtel());
+//    existingReservation.setReservationemail(Reservation.getReservationemail());
+    //   existingReservation.setReservationncin(Reservation.getReservationncin());
+    //   existingReservation.setReservationsalle(Reservation.getReservationsalle());
+    //  existingReservation.setReservationmateriel(Reservation.getReservationmateriel());
+    //    existingReservation.setReservationdate(Reservation.getReservationdate());
 
-        return ReservationRepository.save(existingReservation);
+
+    //    ReservationRepository.saveAndFlush(updatedReservation);
+
+            // Return the updated Reservation.
+    // return ResponseEntity.ok(updatedReservation);
+    // } else {
+            // Reservation does not exist.
+    //    return ResponseEntity.notFound().build();
+       // }
+        // //////////////////////////////////////////////////////////////////////////////////////////
+    //public Reservation UpdateReservation
+  //  (Long idReservation ,Reservation Reservation) {
+
+   //     return ReservationRepository.save(Reservation);
+ //   }
+
+     public Reservation updateReservation(Long idReservation, Reservation
+    reservation) {
+     reservation.setIdreservation(idReservation);
+     return ReservationRepository.save(reservation);
     }
-
-    // public Reservation updateReservation(Long idReservation, Reservation
-    // reservation) {
-    // reservation.setIdreservation(idReservation);
-    // return ReservationRepository.save(reservation);
-    // }
 
 }

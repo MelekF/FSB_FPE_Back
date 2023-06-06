@@ -2,8 +2,11 @@ package fsb.pfe.project.Controller;
 
 import java.util.List;
 
+import fsb.pfe.project.Model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,10 +42,20 @@ public class UserController {
         return UserService.getUsers();
     }
 
+   // @GetMapping("/user/{iduser}")
+    //public User getUserById(@PathVariable Long iduser) {
+       // return UserService.getUserById(iduser);
+    //}
+
     @GetMapping("/user/{iduser}")
-    public User getUserById(@PathVariable Long iduser) {
-        return UserService.getUserById(iduser);
+    public ResponseEntity<User> getReservationById(@PathVariable("iduser") Long iduser) {
+        User User= UserService.getUserById(iduser);
+        return new ResponseEntity<>(User, HttpStatus.OK);
     }
+
+
+
+
 
     // @GetMapping("/user/{usernom}")
     // public User getUserByname(@PathVariable String usernom) {

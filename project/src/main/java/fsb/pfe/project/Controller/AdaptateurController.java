@@ -2,6 +2,7 @@ package fsb.pfe.project.Controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,10 @@ import fsb.pfe.project.Model.Adaptateur;
 import fsb.pfe.project.service.AdaptateurService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 
 public class AdaptateurController {
+    @Autowired
 
     private AdaptateurService AdaptateurService;
 
